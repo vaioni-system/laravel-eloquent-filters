@@ -16,19 +16,17 @@ class EloquentFilters extends Collection
      */
     public function __construct($items = [])
     {
-        static::validateParameters($items);
+        static::validateItems($items);
 
         return parent::__construct($items);
     }
 
     /**
-     * @param  mixed $items
-     * @return static
-     * @throws Throwable
+     * {@inheritDoc}
      */
-    public static function make($items = [])
+    public static function make($items = [], ...$args)
     {
-        static::validateParameters($items);
+        static::validateItems($items);
 
         return parent::make($items);
     }
@@ -58,7 +56,7 @@ class EloquentFilters extends Collection
      * @param $items
      * @throws Throwable
      */
-    protected static function validateParameters($items)
+    protected static function validateItems($items)
     {
         collect($items)->each(fn ($item) => throw_unless(
             $item instanceof EloquentFilterContract,

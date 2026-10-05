@@ -9,10 +9,7 @@ use Pricecurrent\LaravelEloquentFilters\Tests\Models\FilterableModel;
 
 class FilterableModelTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function it_is_filtered_with_provided_filter()
+    public function test_it_is_filtered_with_provided_filter()
     {
         FilterableModel::factory()->create(['name' => 'john']);
         FilterableModel::factory()->create(['name' => 'jack']);
@@ -28,10 +25,7 @@ class FilterableModelTest extends TestCase
         $this->assertEquals('jack', $user->name);
     }
 
-    /**
-     * @test
-     */
-    public function it_utilising_all_provided_filters()
+    public function test_it_utilising_all_provided_filters()
     {
         $modelA = FilterableModel::factory()->create(['name' => 'john', 'age' => 20]);
         $modelB = FilterableModel::factory()->create(['name' => 'jack', 'age' => 14]);
@@ -46,10 +40,7 @@ class FilterableModelTest extends TestCase
         $this->assertTrue($results->contains($modelC));
     }
 
-    /**
-     * @test
-     */
-    public function it_is_chainable_with_other_builder_methods()
+    public function test_it_is_chainable_with_other_builder_methods()
     {
         FilterableModel::factory()->create(['name' => 'john']);
         FilterableModel::factory()->create(['name' => 'jack']);
@@ -65,10 +56,7 @@ class FilterableModelTest extends TestCase
         $this->assertEquals('john', $user->name);
     }
 
-    /**
-     * @test
-     */
-    public function it_ignores_filter_that_is_not_applicable()
+    public function test_it_ignores_filter_that_is_not_applicable()
     {
         $modelA = FilterableModel::factory()->create(['age' => 18]);
         $modelB = FilterableModel::factory()->create(['age' => 30]);

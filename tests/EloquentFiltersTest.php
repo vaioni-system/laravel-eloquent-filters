@@ -8,16 +8,16 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Pricecurrent\LaravelEloquentFilters\Contracts\EloquentFilterContract;
 use Pricecurrent\LaravelEloquentFilters\EloquentFilters;
 use Pricecurrent\LaravelEloquentFilters\Exceptions\EloquentFiltersException;
+use PHPUnit\Framework\Attributes\Test;
 
 class EloquentFiltersTest extends TestCase
 {
     use DatabaseTransactions;
 
     /**
-     * @test
      * @covers \EloquentFilters::handle
      */
-    public function it_is_buit_off_of_the_eloquent_filters()
+    public function test_it_is_buit_off_of_the_eloquent_filters()
     {
         $filterA = $this->mock(EloquentFilterContract::class);
         $filterB = $this->mock(EloquentFilterContract::class);
@@ -28,10 +28,9 @@ class EloquentFiltersTest extends TestCase
     }
 
     /**
-     * @test
      * @covers \EloquentFilters::handle
      */
-    public function it_applies_all_the_filters()
+    public function test_it_applies_all_the_filters()
     {
         $builder = new Builder(resolve(QueryBuilder::class));
 
@@ -49,10 +48,9 @@ class EloquentFiltersTest extends TestCase
     }
 
     /**
-     * @test
      * @covers \EloquentFilters::handle
      */
-    public function it_doesnt_apply_inapplicable_filters()
+    public function test_it_doesnt_apply_inapplicable_filters()
     {
         $builder = new Builder(resolve(QueryBuilder::class));
 
@@ -70,10 +68,9 @@ class EloquentFiltersTest extends TestCase
     }
 
     /**
-     * @test
      * @covers \EloquentFilters::handle
      */
-    public function it_throws_an_exception_when_composed_with_non_filterable_contracts()
+    public function test_it_throws_an_exception_when_composed_with_non_filterable_contracts()
     {
         $builder = new Builder(resolve(QueryBuilder::class));
 

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\File;
 
 class FilterMakeCommandTest extends TestCase
 {
+    private string $filterName;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -14,10 +16,7 @@ class FilterMakeCommandTest extends TestCase
         File::delete($this->filtersPath("$this->filterName.php"));
     }
 
-    /**
-     * @test
-     */
-    public function it_creates_a_filter_class()
+    public function test_it_creates_a_filter_class()
     {
         Artisan::call('make:eloquent-filter', [
             'name' => $this->filterName,
@@ -29,10 +28,7 @@ class FilterMakeCommandTest extends TestCase
         $this->assertFileEquals($expectedFile, $resultFile);
     }
 
-    /**
-     * @test
-     */
-    public function it_inline_creates_a_filter_class()
+    public function test_it_inline_creates_a_filter_class()
     {
         Artisan::call("make:eloquent-filter {$this->filterName}");
 
@@ -42,10 +38,7 @@ class FilterMakeCommandTest extends TestCase
         $this->assertFileEquals($expectedFile, $resultFile);
     }
 
-    /**
-     * @test
-     */
-    public function it_creates_a_filter_class_with_field_name()
+    public function test_it_creates_a_filter_class_with_field_name()
     {
         Artisan::call('make:eloquent-filter', [
             'name' => $this->filterName,
@@ -57,10 +50,7 @@ class FilterMakeCommandTest extends TestCase
         $this->assertFileEquals($expectedFile, $resultFile);
     }
 
-    /**
-     * @test
-     */
-    public function it_inline_creates_a_filter_class_with_field_name()
+    public function test_it_inline_creates_a_filter_class_with_field_name()
     {
         Artisan::call("make:eloquent-filter {$this->filterName} --field=name");
         $expectedFile = $this->expectedFilesPath('FilterMakerCommand/it_creates_a_filter_class_with_field_name.php');
