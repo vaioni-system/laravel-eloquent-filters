@@ -8,7 +8,6 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Pricecurrent\LaravelEloquentFilters\Contracts\EloquentFilterContract;
 use Pricecurrent\LaravelEloquentFilters\EloquentFilters;
 use Pricecurrent\LaravelEloquentFilters\Exceptions\EloquentFiltersException;
-use PHPUnit\Framework\Attributes\Test;
 
 class EloquentFiltersTest extends TestCase
 {
